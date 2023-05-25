@@ -15,12 +15,12 @@ To spin up this example locally, follow these steps:
 
 ## How it works
 
-Payload utilizes [NodeMailer](https://nodemailer.com/about/) for email functionality. Once you add your email configuration to `payload.init()`, you send email from anywhere in your application just by calling `payload.sendEmail({})`.
+Payload utilizes [NodeMailer](https://nodemailer.com/about/) for email functionality. Once you add your email configuration to your `payload.config()` or `payload.init()`, you send email from anywhere in your application just by calling `payload.sendEmail({})`.
 
 1. Navigate to `src/server.ts` - this is where your email config gets passed to Payload
 2. Open `src/email/transport.ts` - here we are defining the email config. You can use an env variable to switch between the mock email transport and live email service.
 
-Now we can start sending email!
+Now we can start sending emails!
 
 3. Go to `src/collections/Newsletter.ts` - with an `afterChange` hook, we are sending an email when a new user signs up for the newsletter
 
@@ -30,13 +30,18 @@ Let's not forget our authentication emails...
 
 Speaking of customization...
 
-5. Take a look at `src/email/generateEmailHTML` and how it compiles a custom template when sending email. You change this to any HTML template of your choosing.
+5. Take a look at `src/email/generateEmailHTML` and how it compiles a custom template when sending email. You can change this to any HTML template of your choosing.
 
 That's all you need, now you can go ahead and test out this repo by creating a new `user` or `newsletter-signup` and see the email integration in action.
 
 ## Development
 
 To spin up this example locally, follow the [Quick Start](#quick-start).
+
+### Credentials
+
+The username and password to login to ethereal.email will be output to your console when you start up the project.
+The mock credentials will change every time you restart the project.
 
 ## Production
 

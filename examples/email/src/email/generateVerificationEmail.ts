@@ -8,7 +8,7 @@ const generateVerificationEmail = async (args): Promise<string> => {
     content: `<p>Hi${user.name ? ' ' + user.name : ''}! Validate your account by clicking the button below.</p>`,
     cta: {
       buttonLabel: 'Verify',
-      url: `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/verify?token=${token}&email=${user.email}`,
+      url: `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/admin/verify?token=${token}`,
     },
   })
 }
