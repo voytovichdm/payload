@@ -16,6 +16,10 @@ export interface Config {
   }
 }
 export interface Post {
+  validation?: {
+    startDate?: string
+    endDate?: string
+  }
   id: string
   text?: string
   associatedMedia?: string | Media

@@ -21,17 +21,12 @@ export default buildConfigWithDefaults({
 
   onInit: async (payload) => {
     await payload.create({
-      collection: 'users',
+      collection: 'posts',
       data: {
-        email: devUser.email,
-        password: devUser.password,
-      },
-    })
-
-    await payload.create({
-      collection: postsSlug,
-      data: {
-        text: 'example post',
+        validation: {
+          startDate: '2022-08-12T10:00:00.000+00:00',
+          endDate: '2022-08-13T10:00:00.000+00:00',
+        },
       },
     })
   },
