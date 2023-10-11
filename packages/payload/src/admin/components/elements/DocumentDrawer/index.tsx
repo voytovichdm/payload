@@ -55,9 +55,10 @@ export const DocumentDrawerToggler: React.FC<DocumentTogglerProps> = ({
 export const DocumentDrawer: React.FC<DocumentDrawerProps> = (props) => {
   const { drawerSlug } = props
 
+  console.log('from doc drawer', props.test)
   return (
-    <Drawer className={baseClass} gutter={false} header={false} slug={drawerSlug}>
-      <DocumentDrawerContent {...props} />
+    <Drawer className={baseClass} gutter={false} header={false} key={drawerSlug} slug={drawerSlug}>
+      <DocumentDrawerContent {...props} test={props.test} />
     </Drawer>
   )
 }
@@ -89,17 +90,19 @@ export const useDocumentDrawer: UseDocumentDrawer = ({ id, collectionSlug }) => 
   const openDrawer = useCallback(() => {
     openModal(drawerSlug)
   }, [openModal, drawerSlug])
-
   const MemoizedDrawer = useMemo(() => {
-    return (props) => (
-      <DocumentDrawer
-        {...props}
-        collectionSlug={collectionSlug}
-        drawerSlug={drawerSlug}
-        id={id}
-        key={drawerSlug}
-      />
-    )
+    return (props) => {
+      console.log('from memo', props.test, drawerSlug)
+      return (
+        <DocumentDrawer
+          {...props}
+          collectionSlug={collectionSlug}
+          drawerSlug={drawerSlug}
+          id={id}
+          key={drawerSlug}
+        />
+      )
+    }
   }, [id, drawerSlug, collectionSlug])
 
   const MemoizedDrawerToggler = useMemo(() => {

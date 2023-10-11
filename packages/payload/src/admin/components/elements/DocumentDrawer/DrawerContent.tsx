@@ -16,6 +16,7 @@ import X from '../../icons/X'
 import { useAuth } from '../../utilities/Auth'
 import { useConfig } from '../../utilities/Config'
 import { DocumentInfoProvider, useDocumentInfo } from '../../utilities/DocumentInfo'
+import { useFormQueryParams } from '../../utilities/FormQueryParams'
 import { useLocale } from '../../utilities/Locale'
 import RenderCustomComponent from '../../utilities/RenderCustomComponent'
 import DefaultEdit from '../../views/collections/Edit/Default'
@@ -181,9 +182,12 @@ export const DocumentDrawerContent: React.FC<DocumentDrawerProps> = (props) => {
   const { id: idFromProps, collectionSlug, onSave: onSaveFromProps } = props
   const [collectionConfig] = useRelatedCollections(collectionSlug)
   const [id, setId] = useState<null | string>(idFromProps)
+  const { formQueryParams, setFormQueryParams } = useFormQueryParams()
 
+  console.log('inside drawer content', props.test)
   const onSave = useCallback<DocumentDrawerProps['onSave']>(
     (args) => {
+      console.log('inside onsave', props.test)
       setId(args.doc.id)
 
       if (typeof onSaveFromProps === 'function') {
@@ -192,8 +196,12 @@ export const DocumentDrawerContent: React.FC<DocumentDrawerProps> = (props) => {
           collectionConfig,
         })
       }
+      setFormQueryParams({
+        ...formQueryParams,
+        uploadEdits: undefined,
+      })
     },
-    [onSaveFromProps, collectionConfig],
+    [onSaveFromProps, collectionConfig, formQueryParams, setFormQueryParams],
   )
 
   return (
