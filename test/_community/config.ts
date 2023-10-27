@@ -1,10 +1,18 @@
 import { buildConfigWithDefaults } from '../buildConfigWithDefaults'
 import { devUser } from '../credentials'
+import Icon from './Icon'
 import { MediaCollection } from './collections/Media'
 import { PostsCollection, postsSlug } from './collections/Posts'
 import { MenuGlobal } from './globals/Menu'
 
 export default buildConfigWithDefaults({
+  admin: {
+    components: {
+      graphics: {
+        Icon,
+      },
+    },
+  },
   // ...extend config here
   collections: [
     PostsCollection,
