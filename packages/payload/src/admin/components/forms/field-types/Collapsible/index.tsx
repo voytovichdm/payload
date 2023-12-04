@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useCallback, useEffect, useState } from 'react'
 
 import type { DocumentPreferences } from '../../../../../preferences/types'
@@ -14,8 +16,8 @@ import RenderFields from '../../RenderFields'
 import { RowLabel } from '../../RowLabel'
 import { WatchChildErrors } from '../../WatchChildErrors'
 import withCondition from '../../withCondition'
-import './index.scss'
 import { fieldBaseClass } from '../shared'
+import './index.scss'
 
 const baseClass = 'collapsible-field'
 
@@ -89,7 +91,6 @@ const CollapsibleField: React.FC<Props> = (props) => {
 
   return (
     <div
-      id={`field-${fieldPreferencesKey}${path ? `-${path.replace(/\./g, '__')}` : ''}`}
       className={[
         fieldBaseClass,
         baseClass,
@@ -98,6 +99,7 @@ const CollapsibleField: React.FC<Props> = (props) => {
       ]
         .filter(Boolean)
         .join(' ')}
+      id={`field-${fieldPreferencesKey}${path ? `-${path.replace(/\./g, '__')}` : ''}`}
     >
       <WatchChildErrors fieldSchema={fields} path={path} setErrorCount={setErrorCount} />
       <Collapsible

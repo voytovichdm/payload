@@ -1,3 +1,5 @@
+'use client'
+
 export { default as Error } from '../../admin/components/forms/Error'
 
 export { default as FieldDescription } from '../../admin/components/forms/FieldDescription'

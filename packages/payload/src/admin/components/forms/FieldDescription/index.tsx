@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -10,7 +12,7 @@ import { isComponent } from './types'
 const baseClass = 'field-description'
 
 const FieldDescription: React.FC<Props> = (props) => {
-  const { className, description, value, marginPlacement } = props
+  const { className, description, marginPlacement, value } = props
 
   const { i18n } = useTranslation()
 

@@ -1,3 +1,5 @@
+'use client'
+
 import array from './Array'
 import blocks from './Blocks'
 import checkbox from './Checkbox'

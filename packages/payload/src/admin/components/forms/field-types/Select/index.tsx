@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useCallback, useEffect, useState } from 'react'
 
 import type { Option, OptionObject } from '../../../../../fields/config/types'
@@ -25,6 +27,7 @@ const Select: React.FC<Props> = (props) => {
     name,
     admin: {
       className,
+      components: { Error, Label } = {},
       condition,
       description,
       isClearable,
@@ -32,7 +35,6 @@ const Select: React.FC<Props> = (props) => {
       readOnly,
       style,
       width,
-      components: { Error, Label } = {},
     } = {},
     hasMany,
     label,
@@ -87,6 +89,8 @@ const Select: React.FC<Props> = (props) => {
 
   return (
     <SelectInput
+      Error={Error}
+      Label={Label}
       className={className}
       description={description}
       errorMessage={errorMessage}
@@ -104,8 +108,6 @@ const Select: React.FC<Props> = (props) => {
       style={style}
       value={value as string | string[]}
       width={width}
-      Error={Error}
-      Label={Label}
     />
   )
 }
