@@ -400,9 +400,11 @@ export const getTableColumnFromPath = ({
 
             const parentTable = aliasTable || adapter.tables[tableName]
 
-            joins[newTableName] = eq(parentTable.id, adapter.tables[newTableName]._parentID)
-
             aliasTable = undefined
+
+            const localeJoinConstraints = [
+              eq(parentTable.id, adapter.tables[newTableName]._parentID),
+            ]
 
             if (locale !== 'all') {
               constraints.push({
@@ -410,7 +412,10 @@ export const getTableColumnFromPath = ({
                 table: adapter.tables[newTableName],
                 value: locale,
               })
+              localeJoinConstraints.push(eq(adapter.tables[newTableName]._locale, locale))
             }
+
+            joins[newTableName] = and(...localeJoinConstraints)
           }
 
           const targetTable = aliasTable || adapter.tables[newTableName]
