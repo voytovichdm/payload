@@ -47,7 +47,6 @@ const buildWhereInputType = ({
     if (!fieldIsPresentationalOnly(field) && !field.hidden) {
       const getFieldSchema = fieldToSchemaMap({
         parentName,
-        payload,
       })[field.type]
 
       if (getFieldSchema) {

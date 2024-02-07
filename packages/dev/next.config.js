@@ -1,3 +1,5 @@
+const path = require('path')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
@@ -20,6 +22,13 @@ const nextConfig = {
         'mongoose',
         'sharp',
       ],
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve.alias,
+          graphql$: path.resolve(__dirname, '../next/node_modules/graphql/index.js'),
+        },
+      },
     }
   },
 }

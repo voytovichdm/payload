@@ -103,11 +103,11 @@ if (!cached) {
 }
 
 export const registerGraphQLSchema = (payload: Payload): void => {
-  if (cached.schemaGenerated) {
-    return
-  }
+  // if (cached.schemaGenerated) {
+  //   return
+  // }
 
   register(payload)
 
-  cached.schemaGenerated = true
+  // cached.schemaGenerated = true
 }
