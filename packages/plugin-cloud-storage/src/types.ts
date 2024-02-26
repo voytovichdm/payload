@@ -2,7 +2,6 @@ import type { NextFunction, Response } from 'express'
 import type { FileData, ImageSize } from 'payload/types'
 import type { TypeWithID } from 'payload/types'
 import type { CollectionConfig, PayloadRequest } from 'payload/types'
-import type { Configuration as WebpackConfig } from 'webpack'
 
 export interface File {
   buffer: Buffer
@@ -48,7 +47,6 @@ export interface GeneratedAdapter {
   handleUpload: HandleUpload
   onInit?: () => void
   staticHandler: StaticHandler
-  webpack?: (config: WebpackConfig) => WebpackConfig
 }
 
 export type Adapter = (args: { collection: CollectionConfig; prefix?: string }) => GeneratedAdapter

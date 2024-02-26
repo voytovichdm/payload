@@ -13,7 +13,7 @@ export const cloudStorage =
     const { collections: allCollectionOptions, enabled } = pluginOptions
     const config = { ...incomingConfig }
 
-    // Return early if disabled. Only webpack config mods are applied.
+    // Return early if disabled.
     if (enabled === false) {
       return config
     }

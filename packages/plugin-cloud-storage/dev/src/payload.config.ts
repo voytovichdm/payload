@@ -57,40 +57,7 @@ export default buildConfig({
   serverURL: 'http://localhost:3000',
   collections: [Media, Users],
   upload: uploadOptions,
-  admin: {
-    // NOTE - these webpack extensions are only required
-    // for development of this plugin.
-    // No need to use these aliases within your own projects.
-    webpack: (config) => {
-      const newConfig = {
-        ...config,
-        resolve: {
-          ...(config.resolve || {}),
-          alias: {
-            ...(config.resolve.alias || {}),
-            react: path.resolve(__dirname, '../node_modules/react'),
-            [path.resolve(__dirname, '../../src/index')]: path.resolve(
-              __dirname,
-              '../../src/admin/index.ts',
-            ),
-            [path.resolve(__dirname, '../../src/adapters/s3/index')]: path.resolve(
-              __dirname,
-              '../../src/adapters/s3/mock.js',
-            ),
-            [path.resolve(__dirname, '../../src/adapters/gcs/index')]: path.resolve(
-              __dirname,
-              '../../src/adapters/gcs/mock.js',
-            ),
-            [path.resolve(__dirname, '../../src/adapters/azure/index')]: path.resolve(
-              __dirname,
-              '../../src/adapters/azure/mock.js',
-            ),
-          },
-        },
-      }
-      return newConfig
-    },
-  },
+  admin: {},
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },

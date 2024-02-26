@@ -52,8 +52,6 @@ cloudStorage({
 }),
 ```
 
-If the code is included _in any way in your config_ but conditionally disabled in another fashion, you may run into issues such as `Webpack Build Error: Can't Resolve 'fs' and 'stream'` or similar because the plugin must be run at all times in order to properly extend the webpack config.
-
 ## Features
 
 **Adapter-based Implementation**
