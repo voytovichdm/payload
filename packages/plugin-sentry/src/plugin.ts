@@ -5,18 +5,11 @@ import type { PluginOptions } from './types'
 
 import { captureException } from './captureException'
 import { startSentry } from './startSentry'
-import { extendWebpackConfig } from './webpack'
 
 export const sentry =
   (pluginOptions: PluginOptions) =>
   (incomingConfig: Config): Config => {
     const config = { ...incomingConfig }
-    const webpack = extendWebpackConfig(incomingConfig)
-
-    config.admin = {
-      ...(config.admin || {}),
-      webpack,
-    }
 
     if (pluginOptions.enabled === false || !pluginOptions.dsn) {
       return config
